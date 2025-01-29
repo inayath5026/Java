@@ -1,3 +1,4 @@
+package Basics;
 public class Patterns {
 
     public static void printInverted(int num) {
