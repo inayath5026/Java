@@ -1,5 +1,3 @@
-package Oops;
-
 class Employee {
 
     String name;
