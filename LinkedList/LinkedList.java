@@ -211,27 +211,69 @@ public class LinkedList {
 
     }
 
+    public boolean checkPalindrome() {
+
+        if(head == null || head.next == null){
+            return false;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+
+            slow = slow.next;
+            fast = fast.next.next;
+
+        }
+
+        Node mid = slow;
+
+        Node prev = null;
+        Node curr = mid;
+        Node next;
+
+        while(curr != null){
+
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+
+        }
+
+        Node left = head;
+        Node right = prev;
+
+        while(right != null){
+
+            if(right.data != left.data){
+                return false;
+            }
+
+            right = right.next;
+            left = left.next;
+
+        }
+
+        return true;
+
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
-        ll.addFirst(2);
-        ll.addFirst(1);
-        ll.addLast(3);
+        ll.addLast(1);
+        ll.addLast(2);
         ll.addLast(4);
+        ll.addLast(2);
+        ll.addLast(1);
 
-        ll.add(0, 20);
-        ll.add(2, 25);
-        ll.add(5, 30);
-
-        ll.removeFirst();
-        ll.removeLast();
-
-        // System.out.println(ll.Search(22));
-
-        ll.printLinkedList();
         // ll.reverse();
-        ll.findNandRemove(2);
+        // ll.findNandRemove(2);
         ll.printLinkedList();
+
+        System.out.println(ll.checkPalindrome());
 
         System.out.println("size : " + LinkedList.size);
     }
