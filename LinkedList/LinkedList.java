@@ -211,16 +211,36 @@ public class LinkedList {
 
     }
 
+    public boolean isCycle(){
+
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null & fast.next != null){
+
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
+
+            if(slow == fast){
+                return true;    // CYCLE DETECTED
+            }
+
+        }
+
+        return false;
+
+    }
+
     public boolean checkPalindrome() {
 
-        if(head == null || head.next == null){
+        if (head == null || head.next == null) {
             return false;
         }
 
         Node slow = head;
         Node fast = head;
 
-        while(fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
 
             slow = slow.next;
             fast = fast.next.next;
@@ -233,7 +253,7 @@ public class LinkedList {
         Node curr = mid;
         Node next;
 
-        while(curr != null){
+        while (curr != null) {
 
             next = curr.next;
             curr.next = prev;
@@ -245,9 +265,9 @@ public class LinkedList {
         Node left = head;
         Node right = prev;
 
-        while(right != null){
+        while (right != null) {
 
-            if(right.data != left.data){
+            if (right.data != left.data) {
                 return false;
             }
 
