@@ -317,6 +317,20 @@ public class LinkedList {
 
     }
 
+    public int findMiddle(){
+
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow.data;
+
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
@@ -330,7 +344,8 @@ public class LinkedList {
         // ll.findNandRemove(2);
         ll.printLinkedList();
 
-        System.out.println(ll.checkPalindrome());
+        //System.out.println(ll.checkPalindrome());
+        System.out.println("Middle Element in LL : " + ll.findMiddle());
 
         System.out.println("size : " + LinkedList.size);
     }
